@@ -82,6 +82,7 @@
 		B852550E29EF56C70022087F /* NaverMap_CustomMarker */ = {
 			isa = PBXGroup;
 			children = (
+				B852553229EF69E00022087F /* UIView+extension.swift */,
 				B852552A29EF67570022087F /* Model */,
 				B852552729EF5AB80022087F /* Main */,
 				B852550F29EF56C70022087F /* AppDelegate.swift */,
@@ -90,7 +91,6 @@
 				B852551A29EF56C70022087F /* LaunchScreen.storyboard */,
 				B852551D29EF56C70022087F /* Info.plist */,
 				B852552529EF58C50022087F /* AppConfigure.swift */,
-				B852553229EF69E00022087F /* UIView+extension.swift */,
 			);
 			path = NaverMap_CustomMarker;
 			sourceTree = "<group>";

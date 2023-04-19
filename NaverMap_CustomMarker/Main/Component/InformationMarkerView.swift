@@ -11,13 +11,19 @@ import Kingfisher
 
 class InformationMarkerView : UIView {
     
-    let imgView = UIImageView(frame: .init(x: 0, y: 0, width: 24, height: 24)).then {
+    let imgView = UIImageView().then {
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 12
     }
     
-    let informationLabel = UILabel(frame: .init(x: 24 + 4, y: 0 , width: 24, height: 24)).then {
+    let informationLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 16)
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let labelSize = informationLabel.intrinsicContentSize
+        let height = max(labelSize.height, 24) // minimum height of 24 for the image view
+        return CGSize(width: labelSize.width + 16 + 24, height: height)
     }
     
     override init(frame: CGRect) {
@@ -49,6 +55,8 @@ class InformationMarkerView : UIView {
                 switch result {
                 case .success(let value):
                     self.imgView.image = value.image
+                    self.layoutIfNeeded() // update layout after setting image
+                    
                     let img = self.toImage()
                     completin(img)
                 case .failure(let e):
@@ -56,21 +64,37 @@ class InformationMarkerView : UIView {
                     completin(nil)
                 }
             }
+            
+            /*
+             Size 결정 후...
+             이게 핵심
+             */
+            self.frame = CGRect(origin: .zero, size: intrinsicContentSize)
         }
     
-    func attribute() {
+    private func attribute() {
         self.layer.cornerRadius = 4
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.clear.cgColor
     }
     
-    func layout() {
+    private func layout() {
         [
             imgView,
             informationLabel,
         ].forEach {
             addSubview($0)
         }
+        
+        imgView.snp.makeConstraints {
+            $0.width.height.equalTo(24)
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview()
+        }
+        
+        informationLabel.snp.makeConstraints {
+            $0.leading.equalTo(imgView.snp.trailing).offset(8)
+            $0.centerY.equalTo(imgView)
+        }
     }
-
 }

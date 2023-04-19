@@ -47,16 +47,13 @@ class MainViewController : UIViewController {
     
     lazy var touchHandler =  { (overlay : NMFOverlay) -> Bool in
         let userInfo = overlay.userInfo
-        let type = userInfo["type"] as! MarkerType
-        switch type {
+        let data = userInfo["data"] as! MarKerProtocol
+        switch data.type {
         case ._static:
-            let data = userInfo["data"] as! StaticMarker
             print("Static Marker ID : \(data.id)")
         case .human:
-            let data = userInfo["data"] as! HumanMarker
             print("Human Marker ID : \(data.id)")
         case .information:
-            let data = userInfo["data"] as! InformationMarker
             print("Information Marker ID : \(data.id)")
         }
         return true
@@ -84,7 +81,6 @@ class MainViewController : UIViewController {
                     marker.position = .init(lat: data.lat, lng: data.lng)
                     marker.touchHandler = self.touchHandler
                     marker.userInfo = [
-                        "type" : data.type,
                         "data" : data
                     ]
                     
@@ -137,18 +133,12 @@ class MainViewController : UIViewController {
                 $0.map { [weak self] data in
                     guard let self = self else { return NMFMarker() }
                     let marker = NMFMarker()
-                    let width : CGFloat = 44
-                    let height : CGFloat = 64
-                    marker.width = width
-                    marker.height = height
                     marker.position = .init(lat: data.lat, lng: data.lng)
                     marker.touchHandler = self.touchHandler
                     marker.userInfo = [
-                        "type" : data.type,
                         "data" : data
                     ]
-                    
-                    let customView = HumanMarkerView(frame: .init(x: 0, y: 0, width: width, height: height))
+                    let customView = HumanMarkerView()
                     customView.configure(data) {
                         marker.iconImage = NMFOverlayImage(image: $0!)
                     }
@@ -189,17 +179,12 @@ class MainViewController : UIViewController {
                 $0.map { [weak self] data in
                     guard let self = self else { return NMFMarker() }
                     let marker = NMFMarker()
-                    let width : CGFloat = 56
-                    let height : CGFloat = 24
-                    marker.width = width
-                    marker.height = height
                     marker.position = .init(lat: data.lat, lng: data.lng)
                     marker.touchHandler = self.touchHandler
                     marker.userInfo = [
-                        "type" : data.type,
                         "data" : data
                     ]
-                    let customView = InformationMarkerView(frame: .init(x: 0, y: 0, width: width, height: height))
+                    let customView = InformationMarkerView()
                     customView.configure(data) {
                         marker.iconImage = NMFOverlayImage(image: $0!)
                     }
@@ -233,6 +218,12 @@ class MainViewController : UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
     }
     
     func setMarkerImage(_ marker : NMFMarker) {
