@@ -13,7 +13,6 @@ target 'NaverMap_CustomMarker' do
     pod 'SnapKit', '~> 5.6.0'
     pod 'Then'
     pod "RxGesture"
-    pod 'NMapsMap'
     pod 'UIColor_Hex_Swift', '~> 5.1.9'
 
 end
