@@ -7,23 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		908E7430DBD77BBA965A4716 /* Pods_NaverMap_CustomMarker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F336515DC9874C5CB3B3B30B /* Pods_NaverMap_CustomMarker.framework */; };
 		B852551029EF56C70022087F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852550F29EF56C70022087F /* AppDelegate.swift */; };
 		B852551229EF56C70022087F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852551129EF56C70022087F /* SceneDelegate.swift */; };
-		B852551429EF56C70022087F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852551329EF56C70022087F /* ViewController.swift */; };
-		B852551729EF56C70022087F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B852551529EF56C70022087F /* Main.storyboard */; };
 		B852551929EF56C70022087F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B852551829EF56C70022087F /* Assets.xcassets */; };
 		B852551C29EF56C70022087F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B852551A29EF56C70022087F /* LaunchScreen.storyboard */; };
+		B852552429EF56F80022087F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852552329EF56F80022087F /* MainViewController.swift */; };
+		B852552629EF58C50022087F /* AppConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852552529EF58C50022087F /* AppConfigure.swift */; };
+		B852552929EF5AC80022087F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852552829EF5AC80022087F /* MainViewModel.swift */; };
+		B852552C29EF676E0022087F /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852552B29EF676E0022087F /* Marker.swift */; };
+		B852552F29EF67940022087F /* HumanMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852552E29EF67940022087F /* HumanMarkerView.swift */; };
+		B852553129EF679E0022087F /* InformationMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852553029EF679E0022087F /* InformationMarkerView.swift */; };
+		B852553329EF69E00022087F /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852553229EF69E00022087F /* UIView+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		75551C7C88E41069F25D51CB /* Pods-NaverMap_CustomMarker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMap_CustomMarker.debug.xcconfig"; path = "Target Support Files/Pods-NaverMap_CustomMarker/Pods-NaverMap_CustomMarker.debug.xcconfig"; sourceTree = "<group>"; };
 		B852550C29EF56C70022087F /* NaverMap_CustomMarker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMap_CustomMarker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B852550F29EF56C70022087F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B852551129EF56C70022087F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B852551329EF56C70022087F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B852551629EF56C70022087F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B852551829EF56C70022087F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B852551B29EF56C70022087F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B852551D29EF56C70022087F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B852552329EF56F80022087F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B852552529EF58C50022087F /* AppConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigure.swift; sourceTree = "<group>"; };
+		B852552829EF5AC80022087F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		B852552B29EF676E0022087F /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
+		B852552E29EF67940022087F /* HumanMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanMarkerView.swift; sourceTree = "<group>"; };
+		B852553029EF679E0022087F /* InformationMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationMarkerView.swift; sourceTree = "<group>"; };
+		B852553229EF69E00022087F /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		DE17ED24E8800DBCFCF24328 /* Pods-NaverMap_CustomMarker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMap_CustomMarker.release.xcconfig"; path = "Target Support Files/Pods-NaverMap_CustomMarker/Pods-NaverMap_CustomMarker.release.xcconfig"; sourceTree = "<group>"; };
+		F336515DC9874C5CB3B3B30B /* Pods_NaverMap_CustomMarker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaverMap_CustomMarker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +45,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				908E7430DBD77BBA965A4716 /* Pods_NaverMap_CustomMarker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2675DD6257EE83115824F54D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75551C7C88E41069F25D51CB /* Pods-NaverMap_CustomMarker.debug.xcconfig */,
+				DE17ED24E8800DBCFCF24328 /* Pods-NaverMap_CustomMarker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B852550329EF56C70022087F = {
 			isa = PBXGroup;
 			children = (
 				B852550E29EF56C70022087F /* NaverMap_CustomMarker */,
 				B852550D29EF56C70022087F /* Products */,
+				2675DD6257EE83115824F54D /* Pods */,
+				D196618F421A7DDDD50FB6A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +82,52 @@
 		B852550E29EF56C70022087F /* NaverMap_CustomMarker */ = {
 			isa = PBXGroup;
 			children = (
+				B852552A29EF67570022087F /* Model */,
+				B852552729EF5AB80022087F /* Main */,
 				B852550F29EF56C70022087F /* AppDelegate.swift */,
 				B852551129EF56C70022087F /* SceneDelegate.swift */,
-				B852551329EF56C70022087F /* ViewController.swift */,
-				B852551529EF56C70022087F /* Main.storyboard */,
 				B852551829EF56C70022087F /* Assets.xcassets */,
 				B852551A29EF56C70022087F /* LaunchScreen.storyboard */,
 				B852551D29EF56C70022087F /* Info.plist */,
+				B852552529EF58C50022087F /* AppConfigure.swift */,
+				B852553229EF69E00022087F /* UIView+extension.swift */,
 			);
 			path = NaverMap_CustomMarker;
+			sourceTree = "<group>";
+		};
+		B852552729EF5AB80022087F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B852552329EF56F80022087F /* MainViewController.swift */,
+				B852552829EF5AC80022087F /* MainViewModel.swift */,
+				B852552D29EF67840022087F /* Component */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		B852552A29EF67570022087F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B852552B29EF676E0022087F /* Marker.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B852552D29EF67840022087F /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				B852552E29EF67940022087F /* HumanMarkerView.swift */,
+				B852553029EF679E0022087F /* InformationMarkerView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		D196618F421A7DDDD50FB6A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F336515DC9874C5CB3B3B30B /* Pods_NaverMap_CustomMarker.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +137,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B852552029EF56C70022087F /* Build configuration list for PBXNativeTarget "NaverMap_CustomMarker" */;
 			buildPhases = (
+				24D102CDC411E14A30C8E155 /* [CP] Check Pods Manifest.lock */,
 				B852550829EF56C70022087F /* Sources */,
 				B852550929EF56C70022087F /* Frameworks */,
 				B852550A29EF56C70022087F /* Resources */,
+				4F88E99BECD9043ED8F8E2CA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,34 +192,73 @@
 			files = (
 				B852551C29EF56C70022087F /* LaunchScreen.storyboard in Resources */,
 				B852551929EF56C70022087F /* Assets.xcassets in Resources */,
-				B852551729EF56C70022087F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24D102CDC411E14A30C8E155 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NaverMap_CustomMarker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F88E99BECD9043ED8F8E2CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NaverMap_CustomMarker/Pods-NaverMap_CustomMarker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NaverMap_CustomMarker/Pods-NaverMap_CustomMarker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NaverMap_CustomMarker/Pods-NaverMap_CustomMarker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B852550829EF56C70022087F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B852551429EF56C70022087F /* ViewController.swift in Sources */,
+				B852552929EF5AC80022087F /* MainViewModel.swift in Sources */,
+				B852553129EF679E0022087F /* InformationMarkerView.swift in Sources */,
+				B852552629EF58C50022087F /* AppConfigure.swift in Sources */,
+				B852553329EF69E00022087F /* UIView+extension.swift in Sources */,
+				B852552F29EF67940022087F /* HumanMarkerView.swift in Sources */,
+				B852552429EF56F80022087F /* MainViewController.swift in Sources */,
 				B852551029EF56C70022087F /* AppDelegate.swift in Sources */,
 				B852551229EF56C70022087F /* SceneDelegate.swift in Sources */,
+				B852552C29EF676E0022087F /* Marker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B852551529EF56C70022087F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B852551629EF56C70022087F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B852551A29EF56C70022087F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +386,7 @@
 		};
 		B852552129EF56C70022087F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75551C7C88E41069F25D51CB /* Pods-NaverMap_CustomMarker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -292,7 +397,6 @@
 				INFOPLIST_FILE = NaverMap_CustomMarker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -310,6 +414,7 @@
 		};
 		B852552229EF56C70022087F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE17ED24E8800DBCFCF24328 /* Pods-NaverMap_CustomMarker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -320,7 +425,6 @@
 				INFOPLIST_FILE = NaverMap_CustomMarker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

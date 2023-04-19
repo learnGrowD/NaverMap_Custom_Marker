@@ -1,0 +1,6 @@
+framework module Pods_NaverMap_CustomMarker {
+  umbrella header "Pods-NaverMap_CustomMarker-umbrella.h"
+
+  export *
+  module * { export * }
+}
