@@ -11,6 +11,6 @@ import Foundation
 
 struct AppConfigure {
     
-    static let NAVER_ID = "s5e8v4bdv7"
+    static let NAVER_ID = ""
     
 }
