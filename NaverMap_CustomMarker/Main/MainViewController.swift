@@ -45,6 +45,11 @@ class MainViewController : UIViewController {
     var informationMarkerList : [NMFMarker] = []
     
     
+    
+    /*
+     Marker 터치 이벤트 처리하는 부분
+     이 전에는 data를 각각 분리해줬는데 그럴필요가 없다고 판단해서 다형성으로 처리했다.
+     */
     lazy var touchHandler =  { (overlay : NMFOverlay) -> Bool in
         let userInfo = overlay.userInfo
         let data = userInfo["data"] as! MarKerProtocol
@@ -133,6 +138,11 @@ class MainViewController : UIViewController {
                 $0.map { [weak self] data in
                     guard let self = self else { return NMFMarker() }
                     let marker = NMFMarker()
+                    /*
+                     이전의 problem에 코드에서는 width와 height값을 정해줬다. 그러나
+                     maker의 크기는 Image의 크기에 의해 결정된다는것을 확인해서
+                     불필요한 코드를 지워줬다.
+                     */
                     marker.position = .init(lat: data.lat, lng: data.lng)
                     marker.touchHandler = self.touchHandler
                     marker.userInfo = [

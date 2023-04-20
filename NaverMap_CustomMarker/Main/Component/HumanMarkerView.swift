@@ -35,11 +35,16 @@ class HumanMarkerView : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout()
-
+        
         /*
-         이게 핵심임
+         Image 크기와 DecorateView의 크기가 모두 정해져 있기때문에 정적으로
+         View의 크기를 정한다.
          */
         self.frame = .init(x: 0, y: 0, width: 44, height: 64)
+        /*
+         현재 CustomView의 View 계층 구조에서 필요한 모든 레이아웃의 계산을 강제로 수행
+         이 코드를 호출 하기 때문에 AutoLayout을 통한 배치를 완료 할 수 있다.
+         */
         self.layoutIfNeeded()
     }
     
@@ -47,21 +52,33 @@ class HumanMarkerView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /*
+     CustomView 설정하는 부분
+     */
     func configure(
         _ data : HumanMarker,
         _ completion : @escaping (UIImage?) -> Void) {
-        
-        /*
-         Color 설정
-         */
-        imgView.layer.borderColor = UIColor(data.decorateColor).cgColor
-        decorateView.backgroundColor = UIColor(data.decorateColor)
+            /*
+             Color 설정
+             */
+            imgView.layer.borderColor = UIColor(data.decorateColor).cgColor
+            decorateView.backgroundColor = UIColor(data.decorateColor)
+            
+            /*
+             서버에서 이미지를 가져와 처리하는 부분
+             */
             let url = URL(string: data.imgUrl)
             let resource = ImageResource(downloadURL: url!)
             KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
                 switch result {
                 case .success(let value):
                     self.imgView.image = value.image
+                    
+                    /*
+                     layoutIfNeeded을 통해
+                     AutoLayout을 통한 View 배치를 완료했다.
+                     완료한 시점은 이전이니 Snapshot을 찍는다.
+                     */
                     let img = self.toImage()
                     
                     completion(img)
@@ -70,7 +87,7 @@ class HumanMarkerView : UIView {
                     completion(nil)
                 }
             }
-    }
+        }
     
     private func layout() {
         [
