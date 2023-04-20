@@ -18,6 +18,10 @@ enum MarkerType {
     case human
     case information
 }
+
+/*
+ Marker의 기본이 되는 데이터
+ */
 protocol MarKerProtocol {
     var type : MarkerType { get set }
     var id : Int { get set }
@@ -26,6 +30,9 @@ protocol MarKerProtocol {
 }
 
 
+/*
+ 크기와 모양이 정해진 정적인 마커 데이터
+ */
 struct StaticMarker : MarKerProtocol {
     var type: MarkerType
     
@@ -39,6 +46,10 @@ struct StaticMarker : MarKerProtocol {
     let imgUrl : String
 }
 
+
+/*
+ 사용자를 표현하는 마커 데이터
+ */
 struct HumanMarker : MarKerProtocol {
     var type: MarkerType
     
@@ -54,6 +65,9 @@ struct HumanMarker : MarKerProtocol {
 }
 
 
+/*
+ 매물 수 등과 같은 정보를 표현하기 위한 마커 데이터
+ */
 struct InformationMarker : MarKerProtocol {
     var type: MarkerType
     

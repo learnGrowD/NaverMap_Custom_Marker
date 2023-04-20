@@ -11,19 +11,13 @@ import Kingfisher
 
 class InformationMarkerView : UIView {
     
-    let imgView = UIImageView().then {
+    let imgView = UIImageView(frame: .init(x: 0, y: 0, width: 24, height: 24)).then {
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 12
     }
     
-    let informationLabel = UILabel().then {
+    let informationLabel = UILabel(frame: .init(x: 24 + 8, y: 24 / 2 - 16 / 2, width: 16, height: 16)).then {
         $0.font = .systemFont(ofSize: 16)
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        let labelSize = informationLabel.intrinsicContentSize
-        let height = max(labelSize.height, 24) // minimum height of 24 for the image view
-        return CGSize(width: labelSize.width + 16 + 24, height: height)
     }
     
     override init(frame: CGRect) {
@@ -36,6 +30,9 @@ class InformationMarkerView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /*
+     InformationMarkerView 설정
+     */
     func configure(
         _ data : InformationMarker,
         _ completin : @escaping (UIImage?) -> Void) {
@@ -47,7 +44,7 @@ class InformationMarkerView : UIView {
             self.layer.borderColor = UIColor(data.docorateColor).cgColor
             
             /*
-             img 설정
+             서버에서 가져오는 Image를 처리하는 부분
              */
             let url = URL(string: data.imgUrl)
             let resource = ImageResource(downloadURL: url!)
@@ -55,21 +52,18 @@ class InformationMarkerView : UIView {
                 switch result {
                 case .success(let value):
                     self.imgView.image = value.image
-                    self.layoutIfNeeded() // update layout after setting image
                     
+                    /*
+                     CustomMarkerView에 대해서 Snapshot을 하는 부분
+                     */
                     let img = self.toImage()
+                    
                     completin(img)
                 case .failure(let e):
                     print("Information Image Render Error : \(e.localizedDescription)")
                     completin(nil)
                 }
             }
-            
-            /*
-             Size 결정 후...
-             이게 핵심
-             */
-            self.frame = CGRect(origin: .zero, size: intrinsicContentSize)
         }
     
     private func attribute() {
@@ -84,17 +78,6 @@ class InformationMarkerView : UIView {
             informationLabel,
         ].forEach {
             addSubview($0)
-        }
-        
-        imgView.snp.makeConstraints {
-            $0.width.height.equalTo(24)
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview()
-        }
-        
-        informationLabel.snp.makeConstraints {
-            $0.leading.equalTo(imgView.snp.trailing).offset(8)
-            $0.centerY.equalTo(imgView)
         }
     }
 }

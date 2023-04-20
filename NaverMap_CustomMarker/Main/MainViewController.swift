@@ -12,18 +12,8 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import Kingfisher
-/*
- Naver 회사 주변 좌표
-  37.357478091245724 :: 127.10187561957554
-  37.36165099950048 :: 127.1027768418333
- 
- 
-  37.36179880924868 :: 127.1068967150116
-  37.35967259252379 :: 127.10824139562249
-  37.35637513148927 :: 127.10788376796069
-  37.35404408055004 :: 127.10595257740817
-  37.36324278299436 :: 127.10209019630395
- */
+
+
 
 
 /*
@@ -32,28 +22,31 @@ import Kingfisher
  2. HumanMarker (dynamic Marker)
  3. Information Marker (dynamic Marker)
  */
-
-
 class MainViewController : UIViewController {
     let disposeBag = DisposeBag()
     
     let naverMap = NMFNaverMapView()
-    
     
     var staticMarkerList : [NMFMarker] = []
     var humanMarkerList : [NMFMarker] = []
     var informationMarkerList : [NMFMarker] = []
     
     
+    /*
+     Marker버튼 탭에 대해서 정의
+     */
     lazy var touchHandler =  { (overlay : NMFOverlay) -> Bool in
         let userInfo = overlay.userInfo
-        let data = userInfo["data"] as! MarKerProtocol
-        switch data.type {
+        let type = userInfo["type"] as! MarkerType
+        switch type {
         case ._static:
+            let data = userInfo["data"] as! StaticMarker
             print("Static Marker ID : \(data.id)")
         case .human:
+            let data = userInfo["data"] as! HumanMarker
             print("Human Marker ID : \(data.id)")
         case .information:
+            let data = userInfo["data"] as! InformationMarker
             print("Information Marker ID : \(data.id)")
         }
         return true
@@ -81,9 +74,13 @@ class MainViewController : UIViewController {
                     marker.position = .init(lat: data.lat, lng: data.lng)
                     marker.touchHandler = self.touchHandler
                     marker.userInfo = [
+                        "type" : data.type,
                         "data" : data
                     ]
                     
+                    /*
+                     서버에서 가져오는 이미지 처리하는 부분
+                     */
                     let url = URL(string: data.imgUrl)
                     let resource = ImageResource(downloadURL: url!)
                     KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
@@ -133,12 +130,19 @@ class MainViewController : UIViewController {
                 $0.map { [weak self] data in
                     guard let self = self else { return NMFMarker() }
                     let marker = NMFMarker()
+                    marker.width = 44
+                    marker.height = 64
                     marker.position = .init(lat: data.lat, lng: data.lng)
                     marker.touchHandler = self.touchHandler
                     marker.userInfo = [
+                        "type" : data.type,
                         "data" : data
                     ]
-                    let customView = HumanMarkerView()
+                    
+                    /*
+                     SnapShot을 찍은 Image를 통해 Marker에 설정하는 부분
+                     */
+                    let customView = HumanMarkerView(frame: .init(x: 0, y: 0, width: 44, height: 64))
                     customView.configure(data) {
                         marker.iconImage = NMFOverlayImage(image: $0!)
                     }
@@ -182,9 +186,14 @@ class MainViewController : UIViewController {
                     marker.position = .init(lat: data.lat, lng: data.lng)
                     marker.touchHandler = self.touchHandler
                     marker.userInfo = [
+                        "type" : data.type,
                         "data" : data
                     ]
-                    let customView = InformationMarkerView()
+                    /*
+                     
+                     SnapShot을 찍은 Image를 통해 Marker에 설정하는 부분
+                     */
+                    let customView = InformationMarkerView(frame: .init(x: 0, y: 0, width: 64, height: 24))
                     customView.configure(data) {
                         marker.iconImage = NMFOverlayImage(image: $0!)
                     }

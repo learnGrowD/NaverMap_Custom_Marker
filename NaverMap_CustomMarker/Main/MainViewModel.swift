@@ -35,14 +35,13 @@ struct MainViewModel {
         
         
         informationMarkerList = Driver.just([
-            .init(type: .information, id: 6, lat: 37.36184428899243, lng: 127.102276162583, imgUrl: "https://cdn-icons-png.flaticon.com/512/1515/1515636.png", docorateColor: "#3E7D47", count: 32324),
-            .init(type: .information, id: 7, lat: 37.36196935879643, lng: 127.10566647488639, imgUrl: "https://cdn-icons-png.flaticon.com/512/5050/5050019.png", docorateColor: "#6B26B0", count: 5323),
-            .init(type: .information, id: 8, lat: 37.36199209888029, lng: 127.10944302529919, imgUrl: "https://cdn-icons-png.flaticon.com/512/6570/6570907.png", docorateColor: "#2C1C77", count: 823124),
+            .init(type: .information, id: 6, lat: 37.36184428899243, lng: 127.102276162583, imgUrl: "https://cdn-icons-png.flaticon.com/512/1515/1515636.png", docorateColor: "#3E7D47", count: 3),
+            .init(type: .information, id: 7, lat: 37.36196935879643, lng: 127.10566647488639, imgUrl: "https://cdn-icons-png.flaticon.com/512/5050/5050019.png", docorateColor: "#6B26B0", count: 5),
+            .init(type: .information, id: 8, lat: 37.36199209888029, lng: 127.10944302529919, imgUrl: "https://cdn-icons-png.flaticon.com/512/6570/6570907.png", docorateColor: "#2C1C77", count: 8),
         ])
         
         
         
         
     }
-    
 }

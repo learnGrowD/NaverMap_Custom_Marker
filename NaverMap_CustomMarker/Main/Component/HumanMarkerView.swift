@@ -14,14 +14,14 @@ import UIColor_Hex_Swift
 
 class HumanMarkerView : UIView {
     
-    lazy var imgView = UIImageView().then {
+    lazy var imgView = UIImageView(frame: .init(x: 0, y: 0, width: 44, height: 44)).then {
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 12
         $0.layer.borderWidth = 3
         $0.layer.borderColor = UIColor.clear.cgColor
     }
     
-    lazy var decorateView = UIView().then {
+    lazy var decorateView = UIView(frame: .init(x: 44 / 2 - 10 / 2, y: 44 + 8, width: 10, height: 10)).then {
         $0.backgroundColor = .clear
         $0.layer.cornerRadius = 5
     }
@@ -35,34 +35,39 @@ class HumanMarkerView : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout()
-
-        /*
-         이게 핵심임
-         */
-        self.frame = .init(x: 0, y: 0, width: 44, height: 64)
-        self.layoutIfNeeded()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /*
+     HumanMarkerView 설정
+     */
     func configure(
         _ data : HumanMarker,
         _ completion : @escaping (UIImage?) -> Void) {
-        
-        /*
-         Color 설정
-         */
-        imgView.layer.borderColor = UIColor(data.decorateColor).cgColor
-        decorateView.backgroundColor = UIColor(data.decorateColor)
+            /*
+            Color 설정
+            */
+            imgView.layer.borderColor = UIColor(data.decorateColor).cgColor
+            decorateView.backgroundColor = UIColor(data.decorateColor)
             let url = URL(string: data.imgUrl)
             let resource = ImageResource(downloadURL: url!)
+            
+            /*
+             서버에서 가져오는 Image를 처리하는 부분
+             */
             KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
                 switch result {
                 case .success(let value):
                     self.imgView.image = value.image
+                    
+                    /*
+                     CustomMarkerView에 대해서 Snapshot을 하는 부분
+                     */
                     let img = self.toImage()
+                    
                     
                     completion(img)
                 case .failure(let e):
@@ -70,7 +75,7 @@ class HumanMarkerView : UIView {
                     completion(nil)
                 }
             }
-    }
+        }
     
     private func layout() {
         [
@@ -78,18 +83,6 @@ class HumanMarkerView : UIView {
             decorateView,
         ].forEach {
             addSubview($0)
-        }
-        
-        
-        imgView.snp.makeConstraints {
-            $0.width.height.equalTo(44)
-            $0.top.leading.trailing.equalToSuperview()
-        }
-
-        decorateView.snp.makeConstraints {
-            $0.width.height.equalTo(10)
-            $0.top.equalTo(imgView.snp.bottom).offset(8)
-            $0.centerX.equalTo(imgView)
         }
     }
 }
