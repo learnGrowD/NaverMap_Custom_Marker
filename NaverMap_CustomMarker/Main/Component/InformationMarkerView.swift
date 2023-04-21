@@ -108,6 +108,9 @@ class InformationMarkerView : UIView {
             addSubview($0)
         }
         
+        /*
+         AutoLayout 배치 코드
+         */
         imgView.snp.makeConstraints {
             $0.width.height.equalTo(24)
             $0.centerY.equalToSuperview()

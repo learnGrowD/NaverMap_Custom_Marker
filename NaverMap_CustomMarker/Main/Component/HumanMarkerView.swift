@@ -100,6 +100,9 @@ class HumanMarkerView : UIView {
         }
         
         
+        /*
+         AutoLayout 배치 코드
+         */
         imgView.snp.makeConstraints {
             $0.width.height.equalTo(44)
             $0.top.leading.trailing.equalToSuperview()
