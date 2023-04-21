@@ -45,22 +45,27 @@ class InformationMarkerView : UIView {
     func configure(
         _ data : InformationMarker,
         _ completin : @escaping (UIImage?) -> Void) {
-            /*
-             Color 설정
-             */
-            informationLabel.text = "\(data.count)"
-            informationLabel.textColor = UIColor(data.docorateColor)
-            self.layer.borderColor = UIColor(data.docorateColor).cgColor
             
             /*
              서버에서 이미지를 가져와 처리하는 부분
              */
             let url = URL(string: data.imgUrl)
             let resource = ImageResource(downloadURL: url!)
-            KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
+            KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { [weak self] result in
+                guard let self = self else { return }
+                
                 switch result {
                 case .success(let value):
                     self.imgView.image = value.image
+                    
+                    /*
+                     Color 설정
+                     */
+                    self.informationLabel.text = "\(data.count)"
+                    self.informationLabel.textColor = UIColor(data.docorateColor)
+                    self.layer.borderColor = UIColor(data.docorateColor).cgColor
+                    
+                    self.frame = CGRect(origin: .zero, size: self.intrinsicContentSize)
                     
                     /*
                      현재 CustomView의 View 계층 구조에서 필요한 모든 레이아웃의 계산을 강제로 수행
@@ -85,7 +90,8 @@ class InformationMarkerView : UIView {
              informationLabel의 text가 결정 된 후 informationLabel의 intrinsicContentSize를 판단하여
              동적으로 결정한다.
              */
-            self.frame = CGRect(origin: .zero, size: intrinsicContentSize)
+            self.frame = .zero
+            
         }
     
     private func attribute() {

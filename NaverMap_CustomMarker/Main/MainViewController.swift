@@ -46,6 +46,9 @@ class MainViewController : UIViewController {
     
     
     
+    let humanMakerView = HumanMarkerView()
+    let informationMarkerView = InformationMarkerView()
+    
     /*
      Marker 터치 이벤트 처리하는 부분
      이 전에는 data를 각각 분리해줬는데 그럴필요가 없다고 판단해서 다형성으로 처리했다.
@@ -148,8 +151,8 @@ class MainViewController : UIViewController {
                     marker.userInfo = [
                         "data" : data
                     ]
-                    let customView = HumanMarkerView()
-                    customView.configure(data) {
+                    
+                    self.humanMakerView.configure(data) {
                         marker.iconImage = NMFOverlayImage(image: $0!)
                     }
                     return marker
@@ -194,8 +197,7 @@ class MainViewController : UIViewController {
                     marker.userInfo = [
                         "data" : data
                     ]
-                    let customView = InformationMarkerView()
-                    customView.configure(data) {
+                    self.informationMarkerView.configure(data) {
                         marker.iconImage = NMFOverlayImage(image: $0!)
                     }
                     return marker

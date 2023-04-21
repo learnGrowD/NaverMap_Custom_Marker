@@ -51,6 +51,7 @@ class HumanMarkerView : UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     
     /*
      CustomView 설정하는 부분
@@ -59,21 +60,22 @@ class HumanMarkerView : UIView {
         _ data : HumanMarker,
         _ completion : @escaping (UIImage?) -> Void) {
             /*
-             Color 설정
-             */
-            imgView.layer.borderColor = UIColor(data.decorateColor).cgColor
-            decorateView.backgroundColor = UIColor(data.decorateColor)
-            
-            /*
              서버에서 이미지를 가져와 처리하는 부분
              */
             let url = URL(string: data.imgUrl)
             let resource = ImageResource(downloadURL: url!)
-            KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
+            KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { [weak self] result in
+                guard let self = self else { return }
+                
                 switch result {
                 case .success(let value):
-                    self.imgView.image = value.image
+                    /*
+                     Color 설정
+                     */
+                    self.imgView.layer.borderColor = UIColor(data.decorateColor).cgColor
+                    self.decorateView.backgroundColor = UIColor(data.decorateColor)
                     
+                    self.imgView.image = value.image
                     /*
                      layoutIfNeeded을 통해
                      AutoLayout을 통한 View 배치를 완료했다.
