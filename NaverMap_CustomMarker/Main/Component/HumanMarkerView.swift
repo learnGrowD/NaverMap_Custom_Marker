@@ -47,27 +47,27 @@ class HumanMarkerView : UIView {
     func configure(
         _ data : HumanMarker,
         _ completion : @escaping (UIImage?) -> Void) {
+            let url = URL(string: data.imgUrl)
+            let resource = ImageResource(downloadURL: url!)
+            
             /*
             Color 설정
             */
-            imgView.layer.borderColor = UIColor(data.decorateColor).cgColor
-            decorateView.backgroundColor = UIColor(data.decorateColor)
-            let url = URL(string: data.imgUrl)
-            let resource = ImageResource(downloadURL: url!)
+            self.imgView.layer.borderColor = UIColor(data.decorateColor).cgColor
+            self.decorateView.backgroundColor = UIColor(data.decorateColor)
             
             /*
              서버에서 가져오는 Image를 처리하는 부분
              */
             KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
+                
                 switch result {
                 case .success(let value):
                     self.imgView.image = value.image
-                    
                     /*
                      CustomMarkerView에 대해서 Snapshot을 하는 부분
                      */
                     let img = self.toImage()
-                    
                     
                     completion(img)
                 case .failure(let e):

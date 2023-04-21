@@ -39,8 +39,8 @@ class InformationMarkerView : UIView {
             /*
              Color 설정
              */
-            informationLabel.text = "\(data.count)"
-            informationLabel.textColor = UIColor(data.docorateColor)
+            self.informationLabel.text = "\(data.count)"
+            self.informationLabel.textColor = UIColor(data.docorateColor)
             self.layer.borderColor = UIColor(data.docorateColor).cgColor
             
             /*
@@ -52,7 +52,6 @@ class InformationMarkerView : UIView {
                 switch result {
                 case .success(let value):
                     self.imgView.image = value.image
-                    
                     /*
                      CustomMarkerView에 대해서 Snapshot을 하는 부분
                      */
